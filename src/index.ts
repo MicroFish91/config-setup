@@ -9,7 +9,7 @@ import {
 
 install()
   .then(() => console.log("MicroFish has finished installing."))
-  .catch((err) => console.log(err));
+  .catch((_err) => console.log("We ran into a problem."));
 
 async function install(): Promise<void> {
   let promptForOverwrite = false;
@@ -24,6 +24,7 @@ async function install(): Promise<void> {
     // No such file or directory
     if (err.code !== "ENOENT") throw err;
     overwrite = true;
+    throw err;
   }
 
   // If file exists, should we overwrite?
