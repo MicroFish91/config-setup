@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "install": "ts-node ./src/index.ts",
-    "test": "ts-node ./src/test.ts"
+    "config": "ts-node ./src/index.ts"
   },
   "dependencies": {
     "cross-spawn": "^7.0.3",
