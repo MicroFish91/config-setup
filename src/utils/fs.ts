@@ -6,20 +6,19 @@ import path from "path";
 import rmrf from "rimraf";
 
 // Copy files from cwd/contents into ~/mfConfig
-export async function copyFilesOver(): Promise<void | void[]> {
+export async function copyFilesOver(): Promise<void> {
   await rmrfProm(path.join(os.homedir(), "mfConfig"));
 
-  const filenames = await glob("**/*", {
-    cwd: path.join(__dirname, "contents"),
+  const filenames = await glob("./**/*.*", {
+    cwd: path.join(__dirname, "..", "contents"),
   });
 
-  return Promise.all(
-    filenames.map((file) => {
-      const fromLoc = path.join(__dirname, "contents", file);
-      const toLoc = path.join(os.homedir(), "mfConfig", file);
-      return fse.copy(fromLoc, toLoc);
-    })
-  ).catch((e) => console.log(e));
+  for (let i = 0; i < filenames.length; i++) {
+    const file = filenames[i];
+    const fromLoc = path.join(__dirname, "..", "contents", file);
+    const toLoc = path.join(os.homedir(), "mfConfig", file);
+    await fse.copy(fromLoc, toLoc);
+  }
 }
 
 // Equivalent to: "rm -rf $path"

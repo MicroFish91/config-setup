@@ -1,0 +1,14 @@
+{
+  "name": "make-cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "install": "ts-node ./src/index.ts",
+    "test": "ts-node ./src/test.ts"
+  },
+  "dependencies": {
+    "glob": "^7.2.0",
+    "glob-promise": "^4.2.2"
+  }
+}

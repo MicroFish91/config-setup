@@ -8,7 +8,7 @@ import {
 } from "./utils";
 
 install()
-  .then(() => console.log(console.log("MicroFish has finished installing.")))
+  .then(() => console.log("MicroFish has finished installing."))
   .catch((err) => console.log(err));
 
 async function install(): Promise<void> {
